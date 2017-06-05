@@ -30,7 +30,7 @@ ctrl <- trainControl(method = "cv", number = 10,
 # use expand.grid() to create grid of tuning parameters
 grid <- expand.grid(.model = "tree",
                     .trials = c(1, 5, 10, 15, 20, 25, 30, 35),
-                    .winnow = "FALSE")
+                    .winnow = FALSE)
 
 # look at the result of expand.grid()
 grid
