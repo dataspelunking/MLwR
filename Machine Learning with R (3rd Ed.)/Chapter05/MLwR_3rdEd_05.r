@@ -26,8 +26,8 @@ summary(credit$amount)
 table(credit$default)
 
 # create a random sample for training and test data
-# use set.seed to use the same random number sequence as the tutorial
-set.seed(123)
+RNGversion("3.5.2") # use an older random number generator to match the book
+set.seed(123) # use set.seed to use the same random number sequence as the tutorial
 train_sample <- sample(1000, 900)
 
 str(train_sample)

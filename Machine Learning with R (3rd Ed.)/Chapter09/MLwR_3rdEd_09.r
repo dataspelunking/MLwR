@@ -56,6 +56,7 @@ summary(interests$basketball)
 summary(interests_z$basketball)
 
 # create the clusters using k-means
+RNGversion("3.5.2") # use an older random number generator to match the book
 set.seed(2345)
 teen_clusters <- kmeans(interests_z, 5)
 

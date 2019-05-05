@@ -6,6 +6,7 @@ library(caret)
 
 ## Creating a simple tuned model ----
 # automated parameter tuning of C5.0 decision tree 
+RNGversion("3.5.2") # use an older random number generator to match the book
 set.seed(300)
 m <- train(default ~ ., data = credit, method = "C5.0")
 
@@ -36,6 +37,7 @@ grid <- expand.grid(model = "tree",
 grid
 
 # customize train() with the control list and grid of parameters 
+RNGversion("3.5.2") # use an older random number generator to match the book
 set.seed(300)
 m <- train(default ~ ., data = credit, method = "C5.0",
            metric = "Kappa",
@@ -46,6 +48,7 @@ m
 ## Bagging ----
 # Using the ipred bagged decision trees
 library(ipred)
+RNGversion("3.5.2") # use an older random number generator to match the book
 set.seed(300)
 mybag <- bagging(default ~ ., data = credit, nbagg = 25)
 credit_pred <- predict(mybag, credit)
@@ -53,6 +56,7 @@ table(credit_pred, credit$default)
 
 # estimate performance of ipred bagged trees
 library(caret)
+RNGversion("3.5.2") # use an older random number generator to match the book
 set.seed(300)
 ctrl <- trainControl(method = "cv", number = 10)
 train(default ~ ., data = credit, method = "treebag",
@@ -68,6 +72,7 @@ m_c50_bst <- C5.0(default ~ ., data = credit, trials = 100)
 library(adabag)
 
 # create a Adaboost.M1 model
+RNGversion("3.5.2") # use an older random number generator to match the book
 set.seed(300)
 m_adaboost <- boosting(default ~ ., data = credit)
 p_adaboost <- predict(m_adaboost, credit)
@@ -75,6 +80,7 @@ head(p_adaboost$class)
 p_adaboost$confusion
 
 # create and evaluate an Adaboost.M1 model using 10-fold-CV
+RNGversion("3.5.2") # use an older random number generator to match the book
 set.seed(300)
 adaboost_cv <- boosting.cv(default ~ ., data = credit)
 adaboost_cv$confusion
@@ -86,6 +92,7 @@ Kappa(adaboost_cv$confusion)
 ## Random Forests ----
 # random forest with default settings
 library(randomForest)
+RNGversion("3.5.2") # use an older random number generator to match the book
 set.seed(300)
 rf <- randomForest(default ~ ., data = credit)
 rf
@@ -109,6 +116,7 @@ grid_rf <- expand.grid(mtry = c(2, 4, 8, 16))
 
 # test a random forest with the above settings
 # note: this may take a long time to run (~10 minutes)
+RNGversion("3.5.2") # use an older random number generator to match the book
 set.seed(300)
 m_rf <- train(default ~ ., data = credit, method = "rf",
               metric = "ROC", trControl = ctrl,
@@ -120,6 +128,7 @@ grid_c50 <- expand.grid(model = "tree",
                         trials = c(10, 25, 50, 100),
                         winnow = FALSE)
 
+RNGversion("3.5.2") # use an older random number generator to match the book
 set.seed(300)
 m_c50 <- train(default ~ ., data = credit, method = "C5.0",
                metric = "ROC", trControl = ctrl,

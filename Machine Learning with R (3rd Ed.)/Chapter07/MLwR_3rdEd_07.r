@@ -145,6 +145,7 @@ prop.table(table(agreement))
 ## Step 5: Improving model performance ----
 
 # change to a RBF kernel
+RNGversion("3.5.2") # use an older random number generator to match the book
 set.seed(12345)
 letter_classifier_rbf <- ksvm(letter ~ ., data = letters_train, kernel = "rbfdot")
 letter_predictions_rbf <- predict(letter_classifier_rbf, letters_test)
@@ -156,6 +157,7 @@ prop.table(table(agreement_rbf))
 # test various values of the cost parameter
 cost_values <- c(1, seq(from = 5, to = 40, by = 5))
 
+RNGversion("3.5.2") # use an older random number generator to match the book
 accuracy_values <- sapply(cost_values, function(x) {
   set.seed(12345)
   m <- ksvm(letter ~ ., data = letters_train,

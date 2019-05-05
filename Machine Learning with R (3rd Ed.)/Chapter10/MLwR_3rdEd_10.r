@@ -148,6 +148,7 @@ library(irr)
 
 credit <- read.csv("credit.csv")
 
+RNGversion("3.5.2") # use an older random number generator to match the book
 set.seed(123)
 folds <- createFolds(credit$default, k = 10)
 
