@@ -31,6 +31,7 @@ concrete_test <- concrete_norm[774:1030, ]
 library(neuralnet)
 
 # simple ANN with only a single hidden neuron
+RNGversion("3.5.2") # use an older random number generator to match the book
 set.seed(12345) # to guarantee repeatable results
 concrete_model <- neuralnet(formula = strength ~ cement + slag +
                               ash + water + superplastic + 
@@ -50,6 +51,7 @@ cor(predicted_strength, concrete_test$strength)
 
 ## Step 5: Improving model performance ----
 # a more complex neural network topology with 5 hidden neurons
+RNGversion("3.5.2") # use an older random number generator to match the book
 set.seed(12345) # to guarantee repeatable results
 concrete_model2 <- neuralnet(strength ~ cement + slag +
                                ash + water + superplastic + 
@@ -69,6 +71,7 @@ cor(predicted_strength2, concrete_test$strength)
 # create a custom softplus activation function
 softplus <- function(x) { log(1 + exp(x)) }
 
+RNGversion("3.5.2") # use an older random number generator to match the book
 set.seed(12345) # to guarantee repeatable results
 concrete_model3 <- neuralnet(strength ~ cement + slag +
                                ash + water + superplastic + 
