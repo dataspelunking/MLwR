@@ -11,7 +11,7 @@ curve(-x * log2(x) - (1 - x) * log2(1 - x),
 
 ## Example: Identifying Risky Bank Loans ----
 ## Step 2: Exploring and preparing the data ----
-credit <- read.csv("credit.csv")
+credit <- read.csv("credit.csv", stringsAsFactors = TRUE)
 str(credit)
 
 # look at two characteristics of the applicant

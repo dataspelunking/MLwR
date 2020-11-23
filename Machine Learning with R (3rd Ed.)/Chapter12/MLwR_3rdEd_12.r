@@ -274,7 +274,7 @@ stopImplicitCluster()
 ## Parallel processing with caret ----
 
 library(caret)
-credit <- read.csv("credit.csv")
+credit <- read.csv("credit.csv",, stringsAsFactors = TRUE)
 
 # training a random forest without allowing parallel computing
 system.time(train(default ~ ., data = credit, method = "rf",
@@ -306,7 +306,7 @@ ml_binary_classification_evaluator(pred, metric_name = "areaUnderROC")
 
 ## Faster random forests with ranger
 library(ranger)
-credit <- read.csv("credit.csv")
+credit <- read.csv("credit.csv", stringsAsFactors = TRUE)
 
 m <- ranger(default ~ ., data = credit,
             num.trees = 500,

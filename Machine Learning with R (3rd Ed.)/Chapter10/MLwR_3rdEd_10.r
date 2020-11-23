@@ -17,7 +17,7 @@ sms_results <- data.frame(actual_type = sms_test_labels,
 # write.csv(sms_results, "sms_results.csv", row.names = FALSE)
 
 ## Confusion matrixes in R ----
-sms_results <- read.csv("sms_results.csv")
+sms_results <- read.csv("sms_results.csv", stringsAsFactors = TRUE)
 
 # the first several test cases
 head(sms_results)
@@ -121,7 +121,7 @@ auc(sms_roc_knn)
 
 # partitioning data
 library(caret)
-credit <- read.csv("credit.csv")
+credit <- read.csv("credit.csv", stringsAsFactors = TRUE)
 
 # Holdout method
 # using random IDs
@@ -146,7 +146,7 @@ library(caret)
 library(C50)
 library(irr)
 
-credit <- read.csv("credit.csv")
+credit <- read.csv("credit.csv", stringsAsFactors = TRUE)
 
 RNGversion("3.5.2") # use an older random number generator to match the book
 set.seed(123)

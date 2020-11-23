@@ -115,7 +115,7 @@ cor(strengths$pred_new, strengths$actual)
 
 ## Step 2: Exploring and preparing the data ----
 # read in data and examine structure
-letters <- read.csv("letterdata.csv")
+letters <- read.csv("letterdata.csv", stringsAsFactors = TRUE)
 str(letters)
 
 # divide into training and test data
