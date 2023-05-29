@@ -1,2 +1,5 @@
+# Ignore DS_Store files from MacOS
 .DS_Store
+
+# Ignore Rhistory files
 .Rhistory
